@@ -1,0 +1,50 @@
+function calculateAverage(numbers) {
+  if (numbers.length === 0) {
+    return 0;
+  }
+  
+  var sum = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  
+  return sum / numbers.length;
+}
+
+function calculateAverageOfMultipleSets(numberSets) {
+  var averages = [];
+  
+  for (var i = 0; i < numberSets.length; i++) {
+    var currentSet = numberSets[i];
+    var average = calculateAverage(currentSet);
+    averages.push(average);
+  }
+  
+  return averages;
+}
+
+function increaseVolumeByThreeTimes(length, width, height) {
+  var currentVolume = length * width * height;
+  var increasedVolume = currentVolume * 3;
+
+  var scaleFactor = Math.cbrt(increasedVolume / currentVolume);
+  var newLength = length * scaleFactor;
+  var newWidth = width * scaleFactor;
+  var newHeight = height * scaleFactor;
+
+  return { length: newLength, width: newWidth, height: newHeight };
+}
+
+// Example usage:
+var numberSets = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+var averageSet = calculateAverageOfMultipleSets(numberSets);
+console.log("Averages of multiple sets: " + averageSet);
+
+var length = 5;
+var width = 3;
+var height = 2;
+
+var newDimensions = increaseVolumeByThreeTimes(length, width, height);
+console.log("New Length: " + newDimensions.length);
+console.log("New Width: " + newDimensions.width);
+console.log("New Height: " + newDimensions.height);
